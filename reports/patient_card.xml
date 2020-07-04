@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_patient">
+        <t t-call="web.html_container">
+<!--            <t t-call="web.internal_layout">-->
+             <t t-call="web.external_layout">
+                <div class="page">
+                    <t t-foreach="docs" t-as="doc">
+                        <div class="row">
+                            <div class="col-xs-2" style="margin:auto;"></div>
+                            <center>
+                                <div class="col-xs-8" style="margin:auto">
+                                    <table class="table table-condensed" style="border: 3px solid black !important;">
+                                        <tr>
+                                            <td width="40%">
+                                                <p style="text-align:center; padding-top:10px">
+                                                    <img t-if="not doc.image" t-att-src="'/web/static/src/img/placeholder.png'" height="120" border="1" width="120"/>
+                                                    <img t-if="doc.image" t-att-src="'data:image/png;base64,%s' % to_text(doc.image)" height="120" border="1" width="120"/>
+                                                </p>
+                                                <p style="text-align:center">
+                                                    <h2><strong><span t-field="doc.patient_name" /></strong></h2>
+                                                </p>
+                                            </td>
+                                            <td width="60%">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <p style="text-align:right;"><strong>Id: </strong></p>
+                                                            <p style="text-align:right;"><strong>Age: </strong></p>
+                                                            <p style="text-align:right;"><strong>Blood: </strong></p>
+                                                            <p style="text-align:right;"><strong>Gender: </strong></p>
+                                                            <p style="text-align:right;"><strong>Phone: </strong></p>
+                                                        </td>
+                                                        <td>
+                                                            <p style="text-align:left;padding-left:10px" t-field="doc.name_seq" />
+                                                            <p style="text-align:left;padding-left:10px" t-field="doc.patient_age" />
+                                                            <p style="text-align:left;padding-left:10px" t-field="doc.blood_group" />
+                                                            <p style="text-align:left;padding-left:10px" t-field="doc.gender" />
+                                                            <p style="text-align:left;padding-left:10px" t-field="doc.contact_number" />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </div>
+                            </center>
+
+                        </div>
+<!--                        <h2><t t-esc="doc.name_seq" /></h2>-->
+<!--                        Name: <t t-esc="doc.patient_name" /> <br />-->
+<!--                        Age: <t t-esc="doc.patient_age" /> <br />-->
+<!--                        Gender: <t t-esc="doc.gender" /> <br />-->
+<!--                        Notes: <t t-esc="doc.notes" /> <br />-->
+<!--                        Patient Image: <img src="t-esc='doc.image'" /> <br />-->
+<!--                        <img-->
+<!--                          t-attf-src="data:image/*;base64,{{doc.image}}"-->
+<!--                          t-att-alt="doc.image"-->
+<!--                          />-->
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>

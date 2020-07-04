@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- demo data for Hospital Patient -->
+        <record id="hospital_patient_xyz" model="hospital.patient">
+            <field name="patient_name">xyz</field>
+            <field name="patient_age">28</field>
+            <field name="contact_number">01740399036</field>
+            <field name="email">xyz@gmail.com</field>
+            <field name="blood_group">AB+</field>
+            <field name="notes">New Patient by data file</field>
+            <field name="gender">male</field>
+        </record>
+
+    </data>
+    <data noupdate="1">
+        <!-- demo data for Hospital Patient Appointment -->
+        <record id="hospital_patient_appointment_xyz" model="hospital.appointment">
+            <field name="patient_id" ref="hospital_patient_xyz" />
+            <field name="notes">Patient Appointment by data file</field>
+            <field name="appointment_date">2020-06-07</field>
+        </record>
+
+    </data>
+</odoo>

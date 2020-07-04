@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+    <!-- Inherit Form View to Modify it -->
+<!--    <record id="sale_order_inherit" model="ir.ui.view">-->
+<!--        <field name="name">sale.order.inherit</field>-->
+<!--        <field name="model">sale.order</field>-->
+<!--        <field name="inherit_id" ref="sale.view_order_form"/>-->
+<!--        <field name="arch" type="xml">-->
+
+<!--            <field name="partner_id" position="after">-->
+<!--                &lt;!&ndash; Add your fields or attributes here &ndash;&gt;-->
+<!--                <field name="patient_name" />-->
+<!--            </field>-->
+
+<!--        </field>-->
+<!--    </record>-->
+
+    <record id="hospital_patient_kanban" model="ir.ui.view">
+        <field name="name">hospital.patient.kanban</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id"/>
+                <field name="patient_name"/>
+                <field name="name_seq"/>
+                <field name="patient_age"/>
+                <field name="image"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_hospital_patient_kanban">
+                            <t t-if="record.image.raw_value">
+                                <div class="o_kanban_image_fill_left d-none d-md-block"
+                                      t-attf-style="background-image:url('#{kanban_image('hospital.patient', 'image', record.id.raw_value)}')" />
+
+                            </t>
+                            <t t-else="">
+                                <img class="o_kanban_image" alt="Avatar" t-att-src="_s + '/base/static/img/avatar_grey.png'" />
+                            </t>
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title">
+                                    <field name="patient_name"/>
+                                </strong>
+                                <div class="o_kanban_tags_selection"/>
+                                <ul>
+                                    <li>ID: <field name="name_seq" /></li>
+                                    <li>Age: <field name="patient_age" /></li>
+                                    <li>Doctor: <field name="doctor_id" /></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="hospital_patient_search" model="ir.ui.view">
+        <field name="name">hospital.patient.search</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <search string="Search Patients">
+                <field name="patient_name" string="default"
+                       filter_domain="['|', ('patient_name', 'ilike', self), ('name_seq', 'ilike', self)]"/>
+                <field name="patient_name" string="patient name"/>
+                <field name="name_seq" string="patient ID"/>
+                <separator/>
+                <filter string="Male" name="male" domain="[('gender', '=', 'male')]"/>
+                <filter string="Female" name="female" domain="[('gender', '=', 'female')]"/>
+                <group>
+                    <filter string="Gender" name="gender" context="{'group_by':'gender'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="open_patient_appointment" model="ir.actions.act_window">
+        <field name="name">Patient</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('patient_id', '=', active_id)]</field>
+<!--        <field name="context">{"search_default_male":1}</field>-->
+<!--        <field name="context">{"search_default_gender":1}</field>-->
+<!--        <field name="context">{"search_default_female":1}</field>-->
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+                Create First Appointment For This Patient
+            </p>
+            <p>
+                <!-- More details about what a user can do with this object will be OK -->
+            </p>
+        </field>
+    </record>
+
+    <record id="patient_form" model="ir.ui.view">
+        <field name="name">hospital.patient.form</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form string="Patient">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                            <button name="open_patient_appointment"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-calendar">
+                                    <field name="appointment_count"
+                                           string="Appointment"
+                                           widget="statinfo"/>
+                            </button>
+
+                            <button name="%(open_patient_appointment)d"
+                                    type="action"
+                                    class="oe_stat_button"
+                                    icon="fa-usd">
+                                    <field name="appointment_count"
+                                           string="Appointment"
+                                           widget="statinfo"/>
+                            </button>
+                            <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive" >
+                                <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                            </button>
+                    </div>
+
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name_seq" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="patient_name"/>
+                            <field name="blood_group"/>
+                            <field name="patient_age"/>
+                            <field name="age_group"/>
+                            <field name="gender"/>
+                        </group>
+                        <group>
+                            <field name="image" widget="image" class="oe_avatar"
+                                   options="{&quot;zoom&quot;: true, &quot;preview_image&quot;:&quot;image&quot;}"/>
+                            <field name="contact_number" />
+                            <field name="email" />
+                            <field name="doctor_id" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="notes" string="Registration Note"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="patient_tree" model="ir.ui.view">
+        <field name="name">hospital.patient.tree</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <tree string="Patient">
+                <field name="name_seq"/>
+                <field name="patient_name"/>
+<!--                <field name="patient_age" sum="Total of Ages"/>-->
+                <field name="patient_age" avg="Avg of Ages"/>
+                <field name="gender"/>
+                <field name="blood_group"/>
+                <field name="contact_number"/>
+                <field name="doctor_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_patient" model="ir.actions.act_window">
+        <field name="name">Patient</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.patient</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{"search_default_male":1}</field>
+<!--        <field name="context">{"search_default_gender":1}</field>-->
+<!--        <field name="context">{"search_default_female":1}</field>-->
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                <!-- Add Text Here -->
+            </p>
+            <p>
+                <!-- More details about what a user can do with this object will be OK -->
+            </p>
+        </field>
+    </record>
+
+    <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+    <menuitem id="hospital_root" name="Hospital Mgt" sequence="-1"/>
+
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="hospital_patient"
+              name="Patient"
+              parent="hospital_root"
+              action="action_patient"
+              sequence="10"/>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <!--    <menuitem id="hospital_patient_menu" name="Patient" parent="hospital_menu" action="" sequence="10"/>-->
+</odoo>
