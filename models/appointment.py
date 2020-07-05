@@ -30,6 +30,8 @@ class HospitalAppointment(models.Model):
     doctor_note = fields.Text(string="Doctor Notes")
     pharmacy_note = fields.Text(string="Pharmacy Notes")
     appointment_date = fields.Date(string='Date', required=True)
+    doctor_prescription = fields.One2many('hospital.doctor.prescription', 'appointment_id',
+                                          string='Doctor Prescription', track_visibility='always')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('confirm', 'Confirm'),
@@ -43,3 +45,13 @@ class HospitalAppointment(models.Model):
             vals['name'] = self.env['ir.sequence'].next_by_code('hospital.patient.appointment.sequence') or _('New')
         result = super(HospitalAppointment, self).create(vals)
         return result
+
+
+class HospitalAppointmentPrescription(models.Model):
+    _name = 'hospital.doctor.prescription'
+    _description = 'Patient doctor Prescription'
+    appointment_id = fields.Many2one('hospital.appointment', string='Appointment ID')
+    medicine_name = fields.Char(string="Medicine Name", required=True,)
+    daily = fields.Char('Daily Times', default="1+1+1")
+    time_period = fields.Char('Time Period', default='15')
+    note = fields.Text('Note')

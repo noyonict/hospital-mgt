@@ -43,15 +43,33 @@
                     <group>
                         <field name="notes"/>
                     </group>
-                    <notebook>
+                   <notebook>
                         <page string="Doctor Prescription">
-                            <group>
-                                <field name="doctor_note" />
-                            </group>
+                            <field name="doctor_prescription">
+                                <tree editable="bottom">
+                                    <field name="medicine_name"/>
+                                    <field name="daily"/>
+                                    <field name="time_period"/>
+                                    <field name="note"/>
+                                    <field name="appointment_id" invisible="1"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="medicine_name"/>
+                                            <field name="daily"/>
+                                        </group>
+                                        <group>
+                                            <field name="time_period"/>
+                                            <field name="note"/>
+                                        </group>
+                                    </group>
 
+                                </form>
+                            </field>
                         </page>
                         <page string="Pharmacy">
-                            <field name="pharmacy_note" />
+                            <field name="pharmacy_note"/>
                         </page>
                     </notebook>
                 </sheet>
