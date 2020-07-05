@@ -9,4 +9,14 @@
             file="om_hospital.report_patient"
         />
 
+<!--        <report-->
+<!--            id="report_patient_card"-->
+<!--            model="hospital.patient"-->
+<!--            report_type="qweb-pdf"-->
+<!--            menu="False"-->
+<!--            string="Patient Card"-->
+<!--            name="om_hospital.report_patient"-->
+<!--            file="om_hospital.report_patient"-->
+<!--        />-->
+
 </odoo>
