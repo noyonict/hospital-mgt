@@ -10,6 +10,7 @@
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
+        'wizards/create_appointment.xml',
         'data/data.xml',
         'data/sequence.xml',
         'views/patient.xml',

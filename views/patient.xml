@@ -100,6 +100,12 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <form string="Patient">
+                <header>
+                    <button name="%(om_hospital.create_appointment_wizard)d" string="Create Appointment" type="action"
+                            class="oe_highlight"
+                            context="{'default_patient_id': active_id}"/>
+<!--                    <button name="action_send_card" type="object" string="Send By Email" class="oe_highlight" groups="om_hospital.group_hospital_manager"/>-->
+                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
                             <button name="open_patient_appointment"
@@ -142,7 +148,8 @@
                                    options="{&quot;zoom&quot;: true, &quot;preview_image&quot;:&quot;image&quot;}"/>
                             <field name="contact_number" />
                             <field name="email" />
-                            <field name="doctor_id" />
+                            <field name="doctor_id"
+                                   options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
                         </group>
                     </group>
                     <group>
@@ -202,6 +209,13 @@
               parent="hospital_root"
               action="action_patient"
               sequence="10"/>
+
+    <!-- This Menu Item Must have a parent -->
+    <menuitem id="create_appointment"
+              name="Create Appointment"
+              parent="hospital_root"
+              action="create_appointment_wizard"
+              sequence="14"/>
 
     <!-- This Menu Item must have a parent and an action -->
     <!--    <menuitem id="hospital_patient_menu" name="Patient" parent="hospital_menu" action="" sequence="10"/>-->
