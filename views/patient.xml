@@ -17,6 +17,16 @@
 <!--        </field>-->
 <!--    </record>-->
 
+    <record id="action_patient_appointment" model="ir.actions.act_window">
+        <field name="name">Appointments</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="domain">[('patient_id', '=', 'active_id)]</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="om_hospital.patient_appointment_tree"/>
+        <field name="binding_model_id" ref="model_hospital_patient" />
+    </record>
+
     <record id="hospital_patient_kanban" model="ir.ui.view">
         <field name="name">hospital.patient.kanban</field>
         <field name="model">hospital.patient</field>
