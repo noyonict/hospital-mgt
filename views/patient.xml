@@ -148,8 +148,11 @@
                                    options="{&quot;zoom&quot;: true, &quot;preview_image&quot;:&quot;image&quot;}"/>
                             <field name="contact_number" />
                             <field name="email" />
+
                             <field name="doctor_id"
                                    options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                            <field name="doctor_phone" />
+                            <field name="doctor_email" />
                         </group>
                     </group>
                     <group>
@@ -178,6 +181,8 @@
                 <field name="blood_group"/>
                 <field name="contact_number"/>
                 <field name="doctor_id"/>
+                <field name="doctor_phone"/>
+                <field name="doctor_email"/>
             </tree>
         </field>
     </record>
