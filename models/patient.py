@@ -91,3 +91,11 @@ class HospitalPatient(models.Model):
             vals['name_seq'] = self.env['ir.sequence'].next_by_code('hospital.patient.sequence') or _('New')
         result = super(HospitalPatient, self).create(vals)
         return result
+
+    def action_send_card(self):
+        print('Sending email')
+        template_id = self.env.ref('om_hospital.patient_card_email_template').id
+        print('Template ID', template_id)
+        template = self.env['mail.template'].browse(template_id)
+        print('template', template)
+        template.send_mail(self.id, force_send=True)

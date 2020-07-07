@@ -118,7 +118,7 @@
     <menuitem id="hospital_patient_appointment"
               name="Appointment"
               parent="hospital_root"
-              action="action_patient_appointment"
+              action="action_patient_appointment_menu"
               sequence="11"/>
 
     <!-- This Menu Item must have a parent and an action -->
