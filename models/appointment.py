@@ -46,6 +46,12 @@ class HospitalAppointment(models.Model):
         result = super(HospitalAppointment, self).create(vals)
         return result
 
+    def write(self, vals):
+        res = super(HospitalAppointment, self).write(vals)
+        print('Write function!')
+        # Do as per the need
+        return res
+
 
 class HospitalAppointmentPrescription(models.Model):
     _name = 'hospital.doctor.prescription'
