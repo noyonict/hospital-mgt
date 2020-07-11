@@ -6,7 +6,7 @@
     'category': 'test',
     'author': 'Unisoft',
     'website': 'unisoft.com',
-    'depends': ['mail'],
+    'depends': ['mail', 'sale'],
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
