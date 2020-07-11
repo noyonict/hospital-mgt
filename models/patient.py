@@ -109,3 +109,14 @@ class HospitalPatient(models.Model):
         template = self.env['mail.template'].browse(template_id)
         print('template', template)
         template.send_mail(self.id, force_send=True)
+
+    @api.model
+    def test_corn_patient(self):
+        print('Corn job working!')
+        action = self.env.ref('stock.act_assign_serial_numbers').read()[0]
+        print(action)
+        action['context'] = {
+            'default_product_id': '123',
+            'default_move_id': self.id,
+        }
+        print(action['context'])
