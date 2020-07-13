@@ -4,9 +4,19 @@
             id="report_patient_card"
             model="hospital.patient"
             report_type="qweb-pdf"
-            string="Patient Card"
+            string="Patient Card qweb pdf"
             name="om_hospital.report_patient"
             file="om_hospital.report_patient"
+        />
+
+        <report
+            id="report_patient_card_qweb_html"
+            model="hospital.patient"
+            report_type="qweb-html"
+            string="Patient Card qweb html"
+            name="om_hospital.report_patient"
+            file="om_hospital.report_patient"
+            print_report_name="('Patient - %s - %s' % (object.patient_name, object.name_seq))"
         />
 
 <!--        <report-->
