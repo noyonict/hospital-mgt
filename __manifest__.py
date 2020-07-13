@@ -20,6 +20,7 @@
         'views/doctor.xml',
         'reports/report.xml',
         'reports/patient_card.xml',
+        'reports/sale_report_inherit.xml',
     ],
     'demo': [],
     'installable': True,
