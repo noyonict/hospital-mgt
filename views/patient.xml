@@ -196,7 +196,7 @@
             <tree string="Patient">
                 <field name="name_seq"/>
                 <field name="patient_name"/>
-                <field name="patient_name_upper"/>
+                <field name="patient_name_upper" groups="base.group_no_one"/>
 <!--                <field name="patient_age" sum="Total of Ages"/>-->
                 <field name="patient_age" avg="Avg of Ages"/>
                 <field name="gender"/>
