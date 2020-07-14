@@ -65,23 +65,27 @@
                                                 </table>
                                             </td>
                                         </tr>
-                                        <tr t-if="appointments">Appointments</tr>
-                                                <t t-foreach="appointments" t-as="appointment">
-                                                    <tr>
-                                                        <td width="15%">
-                                                            <t t-esc="appointment.name"/>
-                                                        </td>
-                                                        <td width="30%">
-                                                            <t t-esc="appointment.patient_id.patient_name"/>
-                                                        </td>
-                                                        <td width="45%">
-                                                            <t t-esc="appointment.notes"/>
-                                                        </td>
-                                                        <td width="15%">
-                                                            <t t-esc="appointment.appointment_date"/>
-                                                        </td>
-                                                    </tr>
-                                                </t>
+                                        <tr t-if="appointments">
+                                            <td>
+                                                <h2>Appointments</h2>
+                                            </td>
+                                        </tr>
+                                        <t t-foreach="appointments" t-as="appointment">
+                                            <tr>
+                                                <td width="15%">
+                                                    <t t-esc="appointment.name"/>
+                                                </td>
+                                                <td width="30%">
+                                                    <t t-esc="appointment.patient_id.patient_name"/>
+                                                </td>
+                                                <td width="45%">
+                                                    <t t-esc="appointment.notes"/>
+                                                </td>
+                                                <td width="15%">
+                                                    <t t-esc="appointment.appointment_date"/>
+                                                </td>
+                                            </tr>
+                                        </t>
                                     </table>
 
                                 </div>
