@@ -4,7 +4,7 @@
     'summary': 'Module for managing the Hospital',
     'description': 'Hospital Management System',
     'category': 'test',
-    'author': 'Unisoft',
+    'author': 'Unisoft Systems Limited',
     'website': 'unisoft.com',
     'depends': ['mail', 'sale'],
     'data': [
