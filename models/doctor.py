@@ -3,7 +3,7 @@ from odoo import api, fields, models
 
 class HospitalDoctor(models.Model):
     _name = 'hospital.doctor'
-    _description = 'Hospital Doctor'
+    _description = 'Hospital Doctor Mgt'
 
     name = fields.Char('Name', required=True)
     phone = fields.Char('Phone')
