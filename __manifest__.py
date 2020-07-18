@@ -3,7 +3,7 @@
     'version': '13.0.1.1',
     'summary': 'Module for managing the Hospital',
     'description': 'Hospital Management System',
-    'author': "Unisoft System Limited",
+    'author': "Md. Mohaymenul Islam",
     'category': 'test',
     'author': 'Unisoft Systems Limited',
     'website': 'unisoft.com',
