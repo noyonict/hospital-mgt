@@ -8,6 +8,11 @@ class HospitalAppointment(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'appointment_date, id desc'
 
+    def clean_appointment(self):
+        for rec in self:
+            print('Rec', rec)
+            rec.doctor_prescription = [(5, 0, 0)]
+
     def get_default_note(self):
         return 'e.g: Critical patient'
 

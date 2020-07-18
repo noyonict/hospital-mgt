@@ -23,6 +23,7 @@
                 <header>
                     <button name="action_confirm" type="object" string="Confirm" states="draft" class="oe_highlight"/>
                     <button name="action_done" type="object" string="Make Done" states="confirm" class="oe_highlight"/>
+                    <button name="clean_appointment" type="object" string="Clean Appointment"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
                 </header>
                 <sheet>

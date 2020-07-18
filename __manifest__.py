@@ -5,7 +5,7 @@
     'description': 'Hospital Management System',
     'author': "Unisoft System Limited",
     'category': 'test',
-    'author': 'Unisoft',
+    'author': 'Unisoft Systems Limited',
     'website': 'unisoft.com',
     'depends': ['mail', 'sale'],
     'data': [
@@ -19,6 +19,7 @@
         'views/patient.xml',
         'views/appointment.xml',
         'views/doctor.xml',
+        'views/lab.xml',
         'reports/report.xml',
         'reports/patient_card.xml',
         'reports/sale_report_inherit.xml',
