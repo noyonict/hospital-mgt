@@ -55,6 +55,9 @@ class HospitalPatient(models.Model):
         count = self.env['hospital.appointment'].search_count([('patient_id', '=', self.id)])
         self.appointment_count = count
 
+    def print_report(self):
+        return self.env.ref('om_hospital.report_patient_card').report_action(self)
+
     patient_name = fields.Char(string='Name', required=True, track_visibility='always')
     name_seq = fields.Char(string='Patient ID', required=True, copy=False, readonly=True,
                            index=True, default=lambda self: _('New'))
