@@ -28,3 +28,8 @@ class CreatAppointment(models.TransientModel):
             'type': 'ir.actions.any_text'
         }
 
+    def delete_patient(self):
+        for rec in self:
+            rec.patient_id.unlink()
+            print(rec.patient_id, 'patient deleted!')
+
