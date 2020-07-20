@@ -27,6 +27,11 @@ class HospitalAppointment(models.Model):
         for rec in self:
             rec.state = 'done'
 
+    @api.onchange('partner_id')
+    def onchange_partner_id(self):
+        for rec in self:
+            return {'domain': {'order_id': [('partner_id', '=', rec.partner_id.id)]}}
+
     name = fields.Char(string="Appointment ID", required=True, copy=False, readonly=True,
                        index=True, default=lambda self: _('New'))
     patient_id = fields.Many2one('hospital.patient', string="Patient", required=True, default=get_patient_id)
@@ -37,6 +42,8 @@ class HospitalAppointment(models.Model):
     appointment_date = fields.Date(string='Date', required=True)
     doctor_prescription = fields.One2many('hospital.doctor.prescription', 'appointment_id',
                                           string='Doctor Prescription', track_visibility='always')
+    partner_id = fields.Many2one('res.partner', string='Customer')
+    order_id = fields.Many2one('sale.order', string='Sale Order')
     state = fields.Selection([
         ('draft', 'Draft'),
         ('confirm', 'Confirm'),
