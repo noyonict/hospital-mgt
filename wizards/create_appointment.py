@@ -23,4 +23,7 @@ class CreatAppointment(models.TransientModel):
         appointments = self.env['hospital.appointment'].search([])
         for appointment in appointments:
             print('Appointment ID:', appointment.name)
+        return{
+            'type': 'ir.actions.do_nothing'
+        }
 
