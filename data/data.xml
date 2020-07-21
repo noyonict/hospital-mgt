@@ -3,7 +3,8 @@
 
 <!--    <data>-->
 <!--        <record model="res.config.settings" id="res_config_settings">-->
-<!--            <field name="group_product_variant" eval="1"/>-->
+<!--            <field name="group_product_variant" eval="1"/>-->  # For enabling the group product variant feature in sales app
+<!--            <field name="group_product_variant" eval="0"/>-->  # For disabling the group product variant feature in sales app
 <!--        </record>-->
 
 <!--        <function model="res.config.settings" name="execute">-->

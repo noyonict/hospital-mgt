@@ -39,6 +39,8 @@
                         </group>
                         <group>
                             <field name="appointment_date"/>
+                            <field name="partner_id"/>
+                            <field name="order_id"/>
                         </group>
                     </group>
                     <group>

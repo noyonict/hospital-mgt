@@ -23,4 +23,13 @@ class CreatAppointment(models.TransientModel):
         appointments = self.env['hospital.appointment'].search([])
         for appointment in appointments:
             print('Appointment ID:', appointment.name)
+        return{
+            # 'type': 'ir.actions.do_nothing'
+            'type': 'ir.actions.any_text'
+        }
+
+    def delete_patient(self):
+        for rec in self:
+            rec.patient_id.unlink()
+            print(rec.patient_id, 'patient deleted!')
 
