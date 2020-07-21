@@ -1,6 +1,6 @@
 {
     'name': 'Hospital Management',
-    'version': '13.0.1.1',
+    'version': '13.0.1.2',
     'summary': 'Module for managing the Hospital',
     'description': 'Hospital Management System',
     'category': 'test',
