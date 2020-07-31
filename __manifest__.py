@@ -3,7 +3,7 @@
     'version': '13.0.1.2',
     'summary': 'Module for managing the Hospital',
     'description': 'Hospital Management System',
-    'author': "Md. Mohaymenul Islam",
+    'author': "Md. Mohaymenul Islam mentor odoo mates",
     'category': 'test',
     'author': 'Unisoft Systems Limited',
     'website': 'unisoft.com',
